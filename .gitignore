@@ -3,3 +3,7 @@ claude/
 CLAUDE.local.md
 
 # Bazel artefacts.
+bazel-bin/
+bazel-data-viz-demo/
+bazel-out/
+bazel-testlogs/

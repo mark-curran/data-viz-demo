@@ -9,7 +9,8 @@ compile_pip_requirements(
 
 py_binary(
     name = "backend",
-    srcs = ["main.py"],
+    srcs = glob(["*.py"]),
+    imports = ["."],
     main = "main.py",
     deps=["@python_deps//scipy"]
 )

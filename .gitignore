@@ -8,6 +8,9 @@ CLAUDE.local.md
 .venv
 .python-version
 
+# Pycache
+backend/__pycache__
+
 # Sample data on disk
 data_sources/
 

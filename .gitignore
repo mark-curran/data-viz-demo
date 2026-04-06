@@ -11,6 +11,9 @@ CLAUDE.local.md
 # Pycache
 backend/__pycache__
 
+# Bespoke ways of printing results during development
+backend/utils.py
+
 # Sample data on disk
 data_sources/
 

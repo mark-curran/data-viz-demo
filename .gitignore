@@ -2,6 +2,9 @@
 claude/
 CLAUDE.local.md
 
+# VSCode Settings
+.vscode/
+
 # Bazel artefacts.
 bazel-bin
 bazel-data-viz-demo

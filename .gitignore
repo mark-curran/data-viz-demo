@@ -2,8 +2,11 @@
 claude/
 CLAUDE.local.md
 
-# VSCode Settings
+# VSCode settings
 .vscode/
+# VScode python virtual environment.
+.venv
+.python-version
 
 # Bazel artefacts.
 bazel-bin

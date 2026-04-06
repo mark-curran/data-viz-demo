@@ -8,6 +8,9 @@ CLAUDE.local.md
 .venv
 .python-version
 
+# Sample data on disk
+data_sources/
+
 # Bazel artefacts.
 bazel-bin
 bazel-data-viz-demo

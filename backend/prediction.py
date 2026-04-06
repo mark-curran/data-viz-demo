@@ -17,7 +17,7 @@ class PredictionComparitor:
         self.num_experiments = num_experiments
         self.estimates = estimates
 
-    def run_simulation(self) -> None:
+    def run_simulation(self) -> Any:
 
         samples = self.dist.rvs(size=self.num_experiments)
         estimated_values = np.array([e.estimate for e in self.estimates])
@@ -58,4 +58,4 @@ class PredictionComparitor:
             for rank in range(n)
         }
 
-        return
+        return probabilities_by_rank

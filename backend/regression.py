@@ -1,8 +1,8 @@
 from datetime import datetime
-from typing import List, cast
+from typing import Any, List, cast
 
 import numpy as np
-from scipy.stats import linregress
+from scipy.stats import linregress, t
 
 from backend.types import Actual, SciPyresultLinregressResult
 
@@ -39,6 +39,31 @@ class Regressor:
 
         return
 
-    def predict(self, dt: datetime) -> int:
+    def point_predict(self, dt: datetime) -> int:
+
+        if not self._is_fitted:
+            raise ValueError("Regressor is not fitted.")
 
         return int(self._res.intercept + self._res.slope * dt.timestamp())
+
+    def distribution_predict(self, dt: datetime) -> Any:
+
+        # TODO: Double check this methodology against wikipedia:
+        # https://en.wikipedia.org/wiki/Simple_linear_regression#Variance_of_the_mean_response
+        if not self._is_fitted:
+            raise ValueError("Regressor is not fitted.")
+
+        x_pred = dt.timestamp()
+        y_pred = self.point_predict(dt)
+        n = len(self.x)
+
+        x_mean = np.mean(self.x)
+        x_ss = np.var(self.x) * n
+
+        # Derive residual standard error from slope's stderr:
+        # stderr = s / sqrt(x_ss)  →  s = stderr * sqrt(x_ss)
+        s = self._res.stderr * np.sqrt(x_ss)
+
+        se = s * np.sqrt(1 + 1 / n + (x_pred - x_mean) ** 2 / x_ss)
+
+        return t(df=n - 2, loc=y_pred, scale=se)

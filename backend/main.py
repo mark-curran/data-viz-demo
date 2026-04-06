@@ -4,6 +4,7 @@ from os import environ
 from typing import List
 
 from backend.logger import logger
+from backend.prediction import PredictionComparitor
 from backend.regression import Regressor
 from backend.types import Actual, Estimate
 
@@ -31,6 +32,13 @@ def main() -> None:
         ]
 
     regressor = Regressor(actuals)
+
+    regressor.fit()
+    prediction_dist = regressor.distribution_predict(actuals[-1].datetime)
+
+    comparitor = PredictionComparitor(prediction_dist, 1000, estimates)
+
+    comparitor.run_simulation()
 
     return
 

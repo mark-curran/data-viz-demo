@@ -1,8 +1,6 @@
 # Data Visualization Demo
 
-A project to demonstate some open source data visualization capabilities.
-
-Contains a python package for generating visuals.
+A learning project to familiarize oneself with Bazel and some python data libraries.
 
 ## Backend Setup
 
